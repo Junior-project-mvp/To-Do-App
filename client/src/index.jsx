@@ -1,72 +1,82 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Todo from './components/Todo.jsx';
-import TodoList from './components/TodoList.jsx';
-import NavBar from './components/NavBar.jsx';
-import axios from 'axios';
+import React from "react";
+import ReactDOM from "react-dom";
+import Todo from "./components/Todo.jsx";
+import TodoList from "./components/TodoList.jsx";
+import WeatherComp from "./components/WeatherComp.jsx";
+import axios from "axios";
+import TitleComp from "./components/TitleComp.jsx";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     todo:"",
-     todos:[],
-     status:false
-    }
+      todo: "",
+      items: [],
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentDidMount(){
-    axios.get('/')
+  componentDidMount() {
+    axios.get("/").then((response) => {});
   }
 
-  handleChange(e){
+  handleChange(e) {
+    console.log(e.target.value);
     this.setState({
-      todo:e.target.value
-    })
+      todo: e.target.value,
+    });
   }
 
-  handleSubmit(){
-    this.state.todo.length !== 0 
-    ?
-    this.setState({
-      todos:[this.state.todo, ...this.state.todos],
-      id:this.state.id+1
-    })
-    :
-    alert("Missing todo !")
+  handleSubmit() {
+    this.state.todo !== ""
+      ? this.setState({
+          items: [this.state.todo, ...this.state.items],
+        }) && axios.post('/todos', this.state.todo)
+        .then((response)=>{
+          console.log(response.data)
+          res.send(response.data)
+        }).catch((err)=>{console.log(err)})
+      : alert("Missing todo !");
   }
 
-  handleDelete(){
-    this.setState({
-      todos:[""],
-      status:true
-    })
+  handleDelete(id) {
+    const Olditems = [...this.state.items];
+    const items = Olditems.filter((elem, i) => {
+      console.log(i, id);
+      return i !== id;
+    });
+    this.setState({ items: items });
   }
-  
-  render () {
+
+  render() {
     return (
-    <div>
-    <NavBar />
-      <h1>Your Todos</h1>
-      <Todo todo={this.state.todo} 
-      handleSubmit={this.handleSubmit}
-      handleChange={this.handleChange}/>
-
-      <TodoList 
-      status={this.state.status}
-      todos={this.state.todos}
-      handleChange={this.handleChange}
-      handleDelete={this.handleDelete}
-      />
-    </div>
-    )
-    
-    
+      <div>
+        <TitleComp />
+        <Todo
+          todo={this.state.todo}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+        />
+        <ul>
+          {this.state.items.map((element, i) => {
+            return (
+              <TodoList
+                key={i}
+                id={i}
+                value={element}
+                handleChange={this.handleChange}
+                handleDelete={this.handleDelete}
+              />
+            );
+          })}
+        </ul>
+        <WeatherComp />
+      </div>
+    );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById("app"));

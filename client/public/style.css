@@ -1,7 +1,19 @@
 * {
-    padding: 10px;
-    background-color: floralwhite;
-  }
+  margin: 10;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items:baseline;
+  background-image: linear-gradient(600deg, #e7de59 0%, #f07b5a 100%);
+  color: black;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
   
   .todo {
     align-items: center;
@@ -15,7 +27,6 @@
     
   }
 
-  .navbar{
-    flex-direction: row;
-    justify-content: flex-start
+  .navbar-container{
+    float:inline-end
   }

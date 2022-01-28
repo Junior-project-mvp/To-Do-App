@@ -1,7 +1,7 @@
 const Todo= require ("../database-mongo/Todo.model")
 
 // UNCOMMENT IF USING MONGOOSE WITH PROMISES & ASYNC AWAIT
-
+// get the data from the DB 
 const readTodos = (req, res) =>{
   Todo.find({})
   .then((todos)=>{
@@ -9,7 +9,7 @@ const readTodos = (req, res) =>{
   })
   .catch(err=>{res.send(err)})
 };
-
+// post data into the DB 
 const createTodos = (req, res)=>{
   var todo = req.body
   Todo.create(todo)
@@ -20,7 +20,7 @@ const createTodos = (req, res)=>{
     res.send(err)
   })
 };
-
+// edit existing DB
 const editTodo = (req, res)=>{
   var todo = req.body
   console.log(todo)
@@ -31,7 +31,7 @@ const editTodo = (req, res)=>{
   })
   .catch(err=>{res.send(err)})
 }
-
+// delete data from DB 
 const deleteTodo = (req,res)=>{
   var todo = req.body
   Todo.deleteOne(todo)
