@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       todo: "",
-      items: [],
+      items: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,7 +20,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("/").then((response) => {});
+    axios.get("/api/items").then((response) => {
+      console.log(response)
+    }).catch(err=>console.log(err))
   }
 
   handleChange(e) {
@@ -34,11 +36,7 @@ class App extends React.Component {
     this.state.todo !== ""
       ? this.setState({
           items: [this.state.todo, ...this.state.items],
-        }) && axios.post('/todos', this.state.todo)
-        .then((response)=>{
-          console.log(response.data)
-          res.send(response.data)
-        }).catch((err)=>{console.log(err)})
+        })
       : alert("Missing todo !");
   }
 
@@ -48,9 +46,11 @@ class App extends React.Component {
       console.log(i, id);
       return i !== id;
     });
-    this.setState({ items: items });
+    this.setState({ 
+      items: items 
+    });
   }
-
+  
   render() {
     return (
       <div>

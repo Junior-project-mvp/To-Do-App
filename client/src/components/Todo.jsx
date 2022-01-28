@@ -13,7 +13,7 @@ const Todo = ({ todo, handleChange, handleSubmit }) => {
 
       <button
       className="btn-add"
-      type="submit" onClick={()=>handleSubmit()}>
+      type="submit" onClick={handleSubmit}>
         Add Todo
       </button>
     </div>
