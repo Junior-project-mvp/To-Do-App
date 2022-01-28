@@ -1,5 +1,5 @@
-.app {
-    padding: 30px;
+* {
+    padding: 10px;
     background-color: floralwhite;
   }
   
@@ -7,5 +7,15 @@
     align-items: center;
     display: flex;
     font-size: 18px;
-    justify-content: space-between;
+
+  }
+
+  .navbar-container {
+    display: flex;
+    
+  }
+
+  .navbar{
+    flex-direction: row;
+    justify-content: flex-start
   }

@@ -2,17 +2,19 @@ const mongoose = require("mongoose");
 const db = require("./index.js");
 
 const todoSchema = new mongoose.Schema({
-  todo:{
-    type:String,
-    required:true
-  },
-  content:String,
-  completed:{
+  content: {
+  type: String,
+  required: {
     type:Boolean,
     default:false
   }
-});
+  },
+  date: {
+  type: Date,
+  default: Date.now
+  }
+  })
 
-const Todo = mongoose.model("Todo", todoSchema);
+const Todo = mongoose.model("todo", todoSchema);
 
 module.exports = Todo;

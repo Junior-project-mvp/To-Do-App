@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongoUri = 'mongodb+srv://Tahar-BRAHAM:Password123@mvp-project.jwq2t.travel.net/test';
+const mongoUri = 'mongodb://localhost/mvp';
 
 mongoose.connect(mongoUri, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
   console.log("db connected");
