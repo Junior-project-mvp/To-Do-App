@@ -12,12 +12,14 @@ class App extends React.Component {
     this.state = {
       todo: "",
       items: [],
+      status: false,
+      completed: [],
     };
-
     // binding the functions
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.openWeather = this.openWeather.bind(this);
   }
 
   // to get the data when refresh the page
@@ -25,7 +27,7 @@ class App extends React.Component {
     axios
       .get("/")
       .then((response) => {
-        console.log(response, " HELLO ");
+        console.log(response);
       })
       .catch((err) => console.log(err));
   }
@@ -45,11 +47,6 @@ class App extends React.Component {
           items: [this.state.todo, ...this.state.items],
         })
       : alert("Missing todo !");
-    axios
-      .post("/api/items/todos", [this.state.items]) // save the data in the DATABASE
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   // deleting the todo from the list
@@ -64,32 +61,53 @@ class App extends React.Component {
     });
   }
 
+  openWeather() {
+    this.setState({
+      status: true,
+      hide: true,
+    });
+    if (this.state.status === true) {
+      this.setState({ status: false });
+    }
+  }
+
   render() {
     return (
-      <div className="big-container">
+      <div>
         <div>
           <TitleComp />
-          <Todo // Todo component
-            todo={this.state.todo}
-            handleSubmit={this.handleSubmit}
-            handleChange={this.handleChange}
-          />
-          <ul className="list-container">
-            {this.state.items.map((element, i) => {
-              return (
-                <TodoList // Todo List component
-                  key={i}
-                  id={i}
-                  value={element}
-                  handleChange={this.handleChange}
-                  handleDelete={this.handleDelete}
-                />
-              );
-            })}
-          </ul>
-          <div>
-            <WeatherComp />
+        </div>
+        <div className="big-container">
+          <div className="div-container">
+            <Todo // Todo component
+              todo={this.state.todo}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+            />
+            <ul className="list-container">
+              {this.state.items.map((element, i) => {
+                return (
+                  <TodoList // Todo List component
+                    key={i}
+                    id={i}
+                    value={element}
+                    handleChange={this.handleChange}
+                    handleDelete={this.handleDelete}
+                  />
+                );
+              })}
+            </ul>
+            <div>{this.state.status ? <WeatherComp /> : null}</div>
           </div>
+          <div className="weather-btn-container"></div>
+          <button
+            className="btn-weather"
+            onClick={() => {
+              this.openWeather();
+            }}
+          >
+            Check the Weather
+          </button>
         </div>
       </div>
     );

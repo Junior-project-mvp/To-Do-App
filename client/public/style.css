@@ -5,20 +5,38 @@
   font-family: "Inter", sans-serif;
   font-family: "Quicksand", sans-serif;
   font-family: "Thasadith", sans-serif;
+  font-size:x-large;
 }
 
 body {
+ 
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: baseline;
+  margin: 6%;
   background: url("./images/todo2.jpg");
   background-size: 100%;
   color: black;
-  font-family: "Poppins", sans-serif;
-  min-height: 100vh;
+
+}
+
+.big-container {
+  background-color: #000000b6;
+  border-radius: 20px;
+  padding:10px;
+  height: 900px;
+  width: 700px;
+}
+
+.title {
+  text-align: center;
+  color: slateblue;
 }
 
 .input-todo {
+  height: 40px;
+  width: 400px;
+  resize: horizontal;
   outline: none;
   border: none;
   padding-right: 2px;
@@ -31,13 +49,29 @@ body {
 
 .btn-add:hover {
   background-color: green;
+  outline: none;
+  border: none;
 }
 
 .btn-add {
+  height: 45px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   margin-left: 50px;
+  outline: none;
+}
+
+.weather-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-weather {
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .todo-container {
@@ -46,6 +80,8 @@ body {
 }
 
 .list-item {
+  height: 40px;
+  /* width: 400px; */
   color: white;
   text-decoration: none;
   display: flex;
@@ -64,21 +100,16 @@ body {
 }
 
 .weather-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-top: 10px;
   margin: 20%;
 }
 
-.title {
-  color: slateblue;
-}
-
-.big-container {
+.title-container {
+  background-color: white;
   background-color: #000000b6;
-  border-radius: 5%;
-}
-
-#app {
-  padding-left: 30%;
-  padding-right: 30%;
-  padding-bottom: 30%;
+  border-radius: 20px;
+  padding:10px;
 }
