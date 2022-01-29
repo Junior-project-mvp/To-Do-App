@@ -1,6 +1,9 @@
 const Todo = require("../database-mongo/Todo.model");
 
 // UNCOMMENT IF USING MONGOOSE WITH PROMISES & ASYNC AWAIT
+
+// CRUD controllers :
+
 // get the data from the DB
 const readTodos = (req, res) => {
   Todo.find({})

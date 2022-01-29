@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("./index.js");
 
+// database schema
 const todoSchema = new mongoose.Schema({
   content: {
     type: String,

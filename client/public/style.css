@@ -1,7 +1,4 @@
 * {
-  margin: 10;
-  padding: 10;
-  box-sizing: border-box;
   text-decoration: none;
   font-family: "Bebas Neue", cursive;
   font-family: "Fuzzy Bubbles", cursive;
@@ -28,11 +25,11 @@ body {
   border-radius: 5px;
 }
 
-.input-todo:hover::placeholder{
+.input-todo:hover::placeholder {
   color: white;
 }
 
-.btn-add:hover{
+.btn-add:hover {
   background-color: green;
 }
 
@@ -73,4 +70,15 @@ body {
 
 .title {
   color: slateblue;
+}
+
+.big-container {
+  background-color: #000000b6;
+  border-radius: 5%;
+}
+
+#app {
+  padding-left: 30%;
+  padding-right: 30%;
+  padding-bottom: 30%;
 }

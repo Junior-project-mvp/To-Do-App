@@ -13,20 +13,23 @@ class App extends React.Component {
       todo: "",
       items: [],
     };
+
     // binding the functions
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
+
   // to get the data when refresh the page
   componentDidMount() {
     axios
       .get("/")
       .then((response) => {
-        console.log(response.data, " HELLO ");
+        console.log(response, " HELLO ");
       })
       .catch((err) => console.log(err));
   }
+
   // onChange to set the input as a state
   handleChange(e) {
     console.log(e.target.value);
@@ -34,6 +37,7 @@ class App extends React.Component {
       todo: e.target.value,
     });
   }
+
   // submitting the todo in the list
   handleSubmit() {
     this.state.todo !== ""
@@ -47,6 +51,7 @@ class App extends React.Component {
         console.log(err);
       });
   }
+
   // deleting the todo from the list
   handleDelete(id) {
     const Olditems = [...this.state.items];
@@ -61,28 +66,30 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <TitleComp />
-        <Todo // Todo component
-          todo={this.state.todo}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
-        <ul className="list-container">
-          {this.state.items.map((element, i) => {
-            return (
-              <TodoList // Todo List component
-                key={i}
-                id={i}
-                value={element}
-                handleChange={this.handleChange}
-                handleDelete={this.handleDelete}
-              />
-            );
-          })}
-        </ul>
+      <div className="big-container">
         <div>
-          <WeatherComp />
+          <TitleComp />
+          <Todo // Todo component
+            todo={this.state.todo}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+          />
+          <ul className="list-container">
+            {this.state.items.map((element, i) => {
+              return (
+                <TodoList // Todo List component
+                  key={i}
+                  id={i}
+                  value={element}
+                  handleChange={this.handleChange}
+                  handleDelete={this.handleDelete}
+                />
+              );
+            })}
+          </ul>
+          <div>
+            <WeatherComp />
+          </div>
         </div>
       </div>
     );
