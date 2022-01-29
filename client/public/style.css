@@ -1,23 +1,76 @@
 * {
   margin: 10;
-  padding: 0;
+  padding: 10;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: "Bebas Neue", cursive;
+  font-family: "Fuzzy Bubbles", cursive;
+  font-family: "Inter", sans-serif;
+  font-family: "Quicksand", sans-serif;
+  font-family: "Thasadith", sans-serif;
 }
 
 body {
   display: flex;
   justify-content: center;
-  align-items:baseline;
-  background-image: linear-gradient(600deg, #e7de59 0%, #f07b5a 100%);
+  align-items: baseline;
+  background: url("./images/todo2.jpg");
+  background-size: 100%;
   color: black;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
 }
-  
-  .todo {
-    align-items: center;
-    display: flex;
-    font-size: 18px;
 
-  }
+.input-todo {
+  outline: none;
+  border: none;
+  padding-right: 2px;
+  border-radius: 5px;
+}
+
+.input-todo:hover::placeholder{
+  color: white;
+}
+
+.btn-add:hover{
+  background-color: green;
+}
+
+.btn-add {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 50px;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.list-item {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4d194db0;
+}
+
+.delete-btn {
+  border: none;
+  cursor: pointer;
+  border-color: none;
+  border-radius: 5px;
+  margin-left: 50px;
+  background-color: #b31919;
+}
+
+.weather-container {
+  padding-top: 10px;
+  margin: 20%;
+}
+
+.title {
+  color: slateblue;
+}

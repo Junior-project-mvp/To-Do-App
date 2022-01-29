@@ -11,16 +11,18 @@ function WeatherComp() {
   });
 
   return (
-    <div>
-      <ReactWeather
-        isLoading={isLoading}
-        errorMessage={errorMessage}
-        data={data}
-        lang="en"
-        locationLabel="Tunis"
-        unitsLabels={{ temperature: "C", windSpeed: "Km/h" }}
-        showForecast={false}
-      />
+    <div className="weather-container">
+      <div className="weather">
+        <ReactWeather
+          isLoading={isLoading}
+          errorMessage={errorMessage}
+          data={data}
+          lang="en"
+          locationLabel="Tunis"
+          unitsLabels={{ temperature: "C", windSpeed: "Km/h" }}
+          showForecast={false}
+        />
+      </div>
     </div>
   );
 }

@@ -2,13 +2,15 @@ import React from "react";
 
 const TodoList = ({ value, handleDelete, id }) => {
   return (
-    <div>
-      <li>
-        {value}
+    <div className="list-item">
+      <div>
+        <li>{value}</li>
+      </div>
+      <div>
         <button className="delete-btn" onClick={() => handleDelete(id)}>
-          <i className="delte-btn">X</i>
+          X
         </button>
-      </li>
+      </div>
     </div>
   );
 };
